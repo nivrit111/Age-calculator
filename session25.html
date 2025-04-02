@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <title> Age calculator </title>
+        <style>
+         body{
+         background-color:lightskyblue;
+         color:black;
+         padding:40px;
+         margin:40px;
+         }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+    <h2 class="text-center"> Age calculator </h2>
+    <form id="ageForm">
+        <div class="form-group">
+            <label for="name"> Full name </label>
+        <input type="text" id="name" class="form-control" placeholder="enter your name" required> 
+        </div>
+        <div class="form-group">
+            <label for="dob"> Date of birth </label>
+            <input type="date" id="dob" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100"> Calculate age </button>
+    </form>
+    <div id="ageresult" class="text-center">
+
+    </div>
+    </div>
+    <script> 
+     function calculateage(){
+     const name = document.getElementById("name").value;
+     const dob = new Date(document.getElementById("dob").value);
+     const today = new Date();
+     console.log(today);
+     let ageinyear = today.getFullYear() - dob.getFullYear; 
+     if(today.getMonth()<dob.getMonth || (today.getMonth() === dob.getMonth() && today.getDate()<dob.getDate())){
+     ageinyear--;
+     }
+    console.log(ageinyear);
+     let ageinmonth = (today.getFullYear() - dob.getFullYear())* 12 + today.getMonth() - dob.getMonth();
+     if(today.getDate(dob.getDate)){
+       ageinmonth--; 
+     }
+     let ageinday = Math.floor((today - dob)/(1000 * 60 * 60 * 24 ));
+     const resultdiv = document.getElementById('ageresult');
+     resultdiv.innerHTML = `
+      <p> hello ${name}! </p> 
+      <p> you are: </p> 
+      <ul>
+        <li> ${ageinyear} years old! </li> 
+        <li> ${ageinmonth} months old </li> 
+        <li> ${ageinday} days old </li> 
+        </ul> 
+     `
+     }
+    
+    document.getElementById("ageForm").addEventListener("submit",function (event){
+    event.preventDefault();
+
+    calculateage();
+     });
+    
+     </script>
+    </body>
+</html>
