@@ -10,6 +10,14 @@
          padding:40px;
          margin:40px;
          }
+         #ageresult{
+       
+         color:white;
+         padding:30px; 
+         font-size: 1.2rem;
+         font-weight:bold;
+
+         }
         </style>
     </head>
     <body>
@@ -36,13 +44,13 @@
      const dob = new Date(document.getElementById("dob").value);
      const today = new Date();
      console.log(today);
-     let ageinyear = today.getFullYear() - dob.getFullYear; 
+     let ageinyear = today.getFullYear() - dob.getFullYear(); 
      if(today.getMonth()<dob.getMonth || (today.getMonth() === dob.getMonth() && today.getDate()<dob.getDate())){
      ageinyear--;
      }
     console.log(ageinyear);
      let ageinmonth = (today.getFullYear() - dob.getFullYear())* 12 + today.getMonth() - dob.getMonth();
-     if(today.getDate(dob.getDate)){
+     if(today.getDate()< dob.getDate()){
        ageinmonth--; 
      }
      let ageinday = Math.floor((today - dob)/(1000 * 60 * 60 * 24 ));
